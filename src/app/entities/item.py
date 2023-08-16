@@ -3,6 +3,7 @@
 # from ..enums.item_type_enum import ItemTypeEnum
 
 
+from typing import Dict
 from ..errors.entity_errors import ParamNotValidated
 
 
@@ -31,7 +32,16 @@ class Cliente:
       if len(agency) != 4 :
         return False
       return True
-
+   def to_dict(self)-> Dict:
+      return{
+          "cliente_id":self.cliente_id,
+          "name":self.name,
+          "agency": self.agency,
+          "account": self.account,
+          "current_balance": self.current_balance
+         }
+      
+      
       
 #     name: str
 #     price: float

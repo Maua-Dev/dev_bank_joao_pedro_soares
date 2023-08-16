@@ -1,5 +1,5 @@
 import pytest
-# from src.app.entities.item import Item
+
 # from src.app.enums.item_type_enum import ItemTypeEnum
 # from src.app.errors.entity_errors import ParamNotValidated
 
@@ -23,7 +23,30 @@ class Test_Item:
         name="Vitor Soller"
         with pytest.raises(ParamNotValidated):
           cliente = Cliente(name, agency="00000",account= "00000-0",current_balance= 1000.0,cliente_id= 1)
+ 
+    def test_to_dict(self):
 
+        name="test"
+        agency="0000"
+        account="00000-0"
+        current_balance=1000.0
+        cliente_id=1
+        cliente = Cliente("test", "0000", "00000-0", 1000.0,1)
+
+        item_dict = cliente.to_dict()
+
+        expected_item_dict = {
+                "cliente_id":cliente_id,
+          "name":name,
+          "agency": agency,
+          "account": account,
+          "current_balance": current_balance
+        }
+        assert item_dict == expected_item_dict
+
+
+       # assert cliente.to_dict() == {'admin_permission': True, 'item_type': 'FOOD', 'name': 'test', 'price': 1.0}
+    
        
 
 #         item = Item("test", 1.0, ItemTypeEnum.FOOD, admin_permission=True)
