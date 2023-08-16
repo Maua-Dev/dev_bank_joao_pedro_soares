@@ -1,11 +1,31 @@
-# import pytest
+import pytest
 # from src.app.entities.item import Item
 # from src.app.enums.item_type_enum import ItemTypeEnum
 # from src.app.errors.entity_errors import ParamNotValidated
 
+    
+from src.app.entities.item import Cliente
+from src.app.errors.entity_errors import ParamNotValidated
 
-# class Test_Item:
-#     def test_item(self):
+
+
+class Test_Item:
+    def test_item(self):
+        cliente = Cliente(name="Vitor Soller", agency="0000",account= "00000-0",current_balance= 1000.0,cliente_id= 1)
+
+        assert cliente.name=="Vitor Soller"
+        assert cliente.agency=="0000"
+        assert cliente.account== "00000-0"
+        assert cliente.current_balance== 1000.0
+        assert cliente.cliente_id== 1    
+
+    def test_item_agencia_errada(self):
+        name="Vitor Soller"
+        with pytest.raises(ParamNotValidated):
+          cliente = Cliente(name, agency="00000",account= "00000-0",current_balance= 1000.0,cliente_id= 1)
+
+       
+
 #         item = Item("test", 1.0, ItemTypeEnum.FOOD, admin_permission=True)
 #         assert item.name == "test"
 #         assert item.price == 1.0

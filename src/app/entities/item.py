@@ -3,12 +3,41 @@
 # from ..enums.item_type_enum import ItemTypeEnum
 
 
-# class Item:
+from ..errors.entity_errors import ParamNotValidated
+
+
+class Cliente:
+   cliente_id:int
+   name :str
+   agency: str 
+   account: str
+   current_balance: float
+
+   def __init__(self, name: str=None, agency: str=None, account: str=None,   current_balance: float=None,cliente_id: int=None):
+    self.name =name
+
+    if not self.validate_agency(agency):
+        raise ParamNotValidated("agency","must have 4 digits")
+    self.agency =agency
+
+    self.account =account
+    self.current_balance =current_balance
+    self.cliente_id=cliente_id
+
+
+
+   @staticmethod
+   def validate_agency(agency: str)->bool:
+      if len(agency) != 4 :
+        return False
+      return True
+
+      
 #     name: str
 #     price: float
 #     item_type: ItemTypeEnum
 #     admin_permission: bool = False
-    
+
 #     def __init__(self, name: str=None, price: float=None, item_type: ItemTypeEnum=None, admin_permission: bool=None):
 #         validation_name = self.validate_name(name)
 #         if validation_name[0] is False:
