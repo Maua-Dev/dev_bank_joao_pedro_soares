@@ -18,6 +18,7 @@ repo = Environments.get_item_repo()()
 
 @app.get("/items/get_all_items")
 def get_all_items():
+    print("Entrando no get all itens")
     clientes = repo.get_all_items()
     clientes_list = list()
     for cliente in clientes:
