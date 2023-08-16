@@ -8,13 +8,13 @@ from ..errors.entity_errors import ParamNotValidated
 
 
 class Cliente:
-   cliente_id:int
+  
    name :str
    agency: str 
    account: str
    current_balance: float
 
-   def __init__(self, name: str=None, agency: str=None, account: str=None,   current_balance: float=None,cliente_id: int=None):
+   def __init__(self, name: str=None, agency: str=None, account: str=None,   current_balance: float=None):
     self.name =name
 
     if not self.validate_agency(agency):
@@ -23,7 +23,7 @@ class Cliente:
 
     self.account =account
     self.current_balance =current_balance
-    self.cliente_id=cliente_id
+
 
 
 
@@ -34,7 +34,7 @@ class Cliente:
       return True
    def to_dict(self)-> Dict:
       return{
-          "cliente_id":self.cliente_id,
+       
           "name":self.name,
           "agency": self.agency,
           "account": self.account,

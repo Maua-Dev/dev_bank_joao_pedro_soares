@@ -11,18 +11,18 @@ from src.app.errors.entity_errors import ParamNotValidated
 
 class Test_Item:
     def test_item(self):
-        cliente = Cliente(name="Vitor Soller", agency="0000",account= "00000-0",current_balance= 1000.0,cliente_id= 1)
+        cliente = Cliente(name="Vitor Soller", agency="0000",account= "00000-0",current_balance= 1000.0)
 
         assert cliente.name=="Vitor Soller"
         assert cliente.agency=="0000"
         assert cliente.account== "00000-0"
         assert cliente.current_balance== 1000.0
-        assert cliente.cliente_id== 1    
+ 
 
     def test_item_agencia_errada(self):
         name="Vitor Soller"
         with pytest.raises(ParamNotValidated):
-          cliente = Cliente(name, agency="00000",account= "00000-0",current_balance= 1000.0,cliente_id= 1)
+          cliente = Cliente(name, agency="00000",account= "00000-0",current_balance= 1000.0)
  
     def test_to_dict(self):
 
@@ -30,13 +30,13 @@ class Test_Item:
         agency="0000"
         account="00000-0"
         current_balance=1000.0
-        cliente_id=1
-        cliente = Cliente("test", "0000", "00000-0", 1000.0,1)
+       
+        cliente = Cliente("test", "0000", "00000-0", 1000.0)
 
         item_dict = cliente.to_dict()
 
         expected_item_dict = {
-                "cliente_id":cliente_id,
+          
           "name":name,
           "agency": agency,
           "account": account,
