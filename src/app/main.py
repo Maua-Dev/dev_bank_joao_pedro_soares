@@ -16,7 +16,7 @@ app = FastAPI()
 
 repo = Environments.get_item_repo()()
 
-@app.get("/items/get_all_items")
+@app.get("/get")
 def get_all_items():
     print("Entrando no get all itens")
     clientes = repo.get_all_items()
@@ -24,7 +24,7 @@ def get_all_items():
     for cliente in clientes:
         clientes_list.append(cliente.to_dict())
     return {
-        "Clientes": clientes_list
+        clientes_list[0]
     }
 
 # @app.get("/items/{item_id}")
