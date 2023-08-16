@@ -1,12 +1,20 @@
-    # import pytest
-    # from src.app.entities.item import Item
-    # from src.app.enums.item_type_enum import ItemTypeEnum
-    # from src.app.repo.item_repository_mock import ItemRepositoryMock
+# import pytest
+# from src.app.entities.item import Cliente
+# from src.app.enums.item_type_enum import ItemTypeEnum
+from src.app.repo.item_repository_mock import ItemRepositoryMock
 
-    # class Test_ItemRepositoryMock:
-    #     def test_get_all_items(self):
-    #         repo = ItemRepositoryMock()
-    #         assert all([item_expect == item for item_expect, item in zip(repo.items.values(), repo.get_all_items())]) 
+
+class Test_ItemRepositoryMock:
+         def test_get_all_items(self):  
+                 repo = ItemRepositoryMock()
+                 clientes = repo.get_all_items()
+                 expected_clientes = repo.clientes
+
+                 assert expected_clientes==clientes 
+# class Test_ItemRepositoryMock:
+#         def test_get_all_items(self):
+#             repo = ItemRepositoryMock()
+#             assert all([item_expect == item for item_expect, item in zip(repo.items.values(), repo.get_all_items())]) 
             
     #     def test_get_item(self):
     #         repo = ItemRepositoryMock()

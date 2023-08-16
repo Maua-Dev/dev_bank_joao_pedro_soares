@@ -1,53 +1,53 @@
 from typing import Dict, Optional, List
 
-from ..enums.item_type_enum import ItemTypeEnum
-from ..entities.item import Item
+# from ..enums.item_type_enum import ItemTypeEnum
+from ..entities.item import Cliente
 from .item_repository_interface import IItemRepository
 
-
+ 
 class ItemRepositoryMock(IItemRepository):
-    items: Dict[int, Item]
+     clientes: Dict[int, Cliente]
     
-    def __init__(self):
-        self.items = {
-            1: Item(name="Barbie", price=48.90, item_type=ItemTypeEnum.TOY, admin_permission=False),
-            2: Item(name="Hamburguer", price=38.00, item_type=ItemTypeEnum.FOOD, admin_permission=False),
-            3: Item(name="T-shirt", price=22.95, item_type=ItemTypeEnum.CLOTHES, admin_permission=False),
-            4: Item(name="Super Mario Bros", price=55.00, item_type=ItemTypeEnum.GAMES, admin_permission=True)
+     def __init__(self):
+        self.clientes = {
+             Cliente(name="Vitor Soller",agency="0000",account="0000-0",current_balance=1000.0,cliente_id=1),
+             Cliente(name="João Brancas",agency="0001",account="0000-1",current_balance=1001.0,cliente_id=2),
+             Cliente(name="Rodrigo",agency="0002",account="0000-2",current_balance=1002.0,cliente_id=3),
+             Cliente(name="Pedro",agency="0003",account="0003-0",current_balance=1003.0,cliente_id=4)
         }
         
-    def get_all_items(self) -> List[Item]:
-        return self.items.values()
+     def get_all_items(self) -> List[Cliente]:
+        return self.clientes
     
-    def get_item(self, item_id: int) -> Optional[Item]:
-        return self.items.get(item_id, None)
+#     def get_item(self, item_id: int) -> Optional[Item]:
+#         return self.items.get(item_id, None)
     
-    def create_item(self, item: Item, item_id: int) -> Item:
+#     def create_item(self, item: Item, item_id: int) -> Item:
         
-        self.items[item_id] = item
-        return item
+#         self.items[item_id] = item
+#         return item
     
-    def delete_item(self, item_id: int) -> Item:
-        item = self.items.pop(item_id, None)
-        return item
+#     def delete_item(self, item_id: int) -> Item:
+#         item = self.items.pop(item_id, None)
+#         return item
         
         
-    def update_item(self, item_id:int, name:str=None, price:float=None, item_type:ItemTypeEnum=None, admin_permission:bool=None) -> Item:
-        item = self.items.get(item_id, None)
-        if item is None:
-            return None
+#     def update_item(self, item_id:int, name:str=None, price:float=None, item_type:ItemTypeEnum=None, admin_permission:bool=None) -> Item:
+#         item = self.items.get(item_id, None)
+#         if item is None:
+#             return None
         
-        if name is not None:
-            item.name = name
-        if price is not None:
-            item.price = price
-        if item_type is not None:
-            item.item_type = item_type
-        if admin_permission is not None:
-            item.admin_permission = admin_permission
-        self.items[item_id] = item
+#         if name is not None:
+#             item.name = name
+#         if price is not None:
+#             item.price = price
+#         if item_type is not None:
+#             item.item_type = item_type
+#         if admin_permission is not None:
+#             item.admin_permission = admin_permission
+#         self.items[item_id] = item
         
-        return item
+#         return item
         
     
     
