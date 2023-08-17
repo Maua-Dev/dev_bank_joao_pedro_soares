@@ -29,6 +29,7 @@ def get_all_items():
 @app.post("/deposit")
 def deposit(request: dict):
 
+
     return {
         "current_balance": 1000.0,
         "timestamp": 1690482853890 
