@@ -25,7 +25,15 @@ def get_all_items():
     for cliente in clientes:
         clientes_list.append(cliente.to_dict())
     return  clientes_list[0]
-     
+
+@app.deposit("/deposit")
+def deposit(request: dict):
+    valor_20 = request.get("20")
+    
+    return {
+        "current_balance": 1000.0,
+        "timestamp": 1690482853890 
+} 
   
 
 # @app.get("/items/{item_id}")
