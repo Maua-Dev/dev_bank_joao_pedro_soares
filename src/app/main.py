@@ -33,7 +33,7 @@ def deposit(request: dict):
     for cliente in clientes:
         clientes_list.append(cliente.to_dict())
     clientes_list[0]
-    newBalance = 1000.0
+    # newBalance = 1000.0
     newBalance=clientes_list[0].get("current_balance")  
     addition=0.0
     newBalance=newBalance
@@ -48,7 +48,7 @@ def deposit(request: dict):
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
     res=newBalance+addition
     
-    cliente = repo.update_balance(0,res)
+    # cliente = repo.update_balance(0,res)
     return {
         "current_balance": res,
         "timestamp": 1690482853890 
