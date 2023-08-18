@@ -53,7 +53,7 @@ def deposit(request: dict):
 
     return {
         "current_balance": res,
-        "timestamp": 1690482853890 
+        "timestamp": timestamp 
 }  
    
 @app.get("/history")
