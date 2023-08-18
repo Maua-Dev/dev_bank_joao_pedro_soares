@@ -30,7 +30,7 @@ def get_all_items():
 def deposit(request: dict):
 
     adition=0
-    newBalance = 1000
+    newBalance = 1000.0
     notes_2 =request.get("2")
     notes_5 =request.get("5")
     notes_10 =request.get("10")   
