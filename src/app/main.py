@@ -16,27 +16,25 @@ app = FastAPI()
 
 repo = Environments.get_item_repo()()
 transactions=[]
+clientes = repo.get_all_items()
+    
+clientes_list = list()
+for cliente in clientes:
+    clientes_list.append(cliente.to_dict())
+newBalance=clientes_list[0].get("current_balance")  
 @app.get("/")
 def get_all_items():
     print("Entrando no get all itens")
-    clientes = repo.get_all_items()
-    print(clientes)
-    clientes_list = list()
-    for cliente in clientes:
-        clientes_list.append(cliente.to_dict())
+    
     return clientes_list[0]
 
 @app.post("/deposit")
 def deposit(request: dict):
-    clientes = repo.get_all_items()
-    clientes_list = list()
-    for cliente in clientes:
-        clientes_list.append(cliente.to_dict())
-    clientes_list[0]
+   
     # newBalance = 1000.0
-    newBalance=clientes_list[0].get("current_balance")  
+ 
     addition=0.0
-    newBalance=newBalance
+  
     notes_2 =request.get("2")
     notes_5 =request.get("5")
     notes_10 =request.get("10")   
@@ -47,12 +45,12 @@ def deposit(request: dict):
     timestamp = int(round(time.time() * 1000))
     
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
-    res=newBalance+addition
-    transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    newBalance=newBalance+addition
+    transactions.append({"type": "deposit",     "value": addition,    "current_balance": newBalance, "timestamp": timestamp})
     #repo.update_balance(0,res)
 
     return {
-        "current_balance": res,
+        "current_balance":newBalance,
         "timestamp": 1690482853890 
 }  
    
