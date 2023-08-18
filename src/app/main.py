@@ -50,7 +50,7 @@ def deposit(request: dict):
     
     # cliente = repo.update_balance(0,res)
     return {
-        "current_balance": newBalance,
+        "current_balance": res,
         "timestamp": 1690482853890 
 }  
    
