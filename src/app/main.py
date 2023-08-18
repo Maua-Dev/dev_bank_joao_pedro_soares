@@ -47,7 +47,7 @@ def deposit(request: dict):
     
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
     res=newBalance+addition
-    transactions.append({"type": "deposit",     "value": addition,    "current_balance": ""+res, "timestamp": 1690482853890})
+    transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": 1690482853890})
     #repo.update_balance(0,res)
 
     return {
@@ -55,14 +55,14 @@ def deposit(request: dict):
         "timestamp": 1690482853890 
 }  
    
-@app.post("/history")
+@app.get("/history")
 def deposit(request: dict):
     return {
   "all_transactions": [
     {
       "type": "deposit",
       "value": 100.0,
-      "current_balance": "1000.0",
+      "current_balance": 1000.0,
       "timestamp": 1690482853890
     },
     {
