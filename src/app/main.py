@@ -36,7 +36,7 @@ def deposit(request: dict):
     newBalance = 1000.0
     newBalance=clientes_list[0].get("current_balance")  
     addition=0.0
-    newBalance=newBalance+3.0
+    newBalance=newBalance
     notes_2 =request.get("2")
     notes_5 =request.get("5")
     notes_10 =request.get("10")   
