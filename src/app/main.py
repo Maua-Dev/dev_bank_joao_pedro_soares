@@ -28,23 +28,29 @@ def get_all_items():
 
 @app.post("/deposit")
 def deposit(request: dict):
-
-    addition=0.0
+    clientes = repo.get_all_items()
+    clientes_list = list()
+    for cliente in clientes:
+        clientes_list.append(cliente.to_dict())
+    clientes_list[0]
     newBalance = 1000.0
-    notes_2 =request.get("2")
-    notes_5 =request.get("5")
-    notes_10 =request.get("10")   
-    notes_20 =request.get("20")
-    notes_50 =request.get("50")
-    notes_100 =request.get("100")
-    notes_200 =request.get("200")    
+    newBalance=clientes_list[0].get("current_balance")  
+    addition=0.0
+    newBalance=newBalance+3.0
+    # notes_2 =request.get("2")
+    # notes_5 =request.get("5")
+    # notes_10 =request.get("10")   
+    # notes_20 =request.get("20")
+    # notes_50 =request.get("50")
+    # notes_100 =request.get("100")
+    # notes_200 =request.get("200")    
     
-    addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
-    res=newBalance+addition
+    # addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
+    # res=newBalance+addition
     
     # cliente = repo.update_balance(0,res)
     return {
-        "current_balance": res,
+        "current_balance": newBalance,
         "timestamp": 1690482853890 
 }  
    
