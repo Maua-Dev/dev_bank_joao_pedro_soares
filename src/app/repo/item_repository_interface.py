@@ -40,7 +40,7 @@ class IItemRepository(ABC):
 #         '''
         
     @abstractmethod
-    def update_balance(self, iposition:int, new_Balance: float) -> Cliente:
+    def update_balance(self, pos:int, new_Balance: float=None):
         '''
         Updates the item with the given id.
         If the item does not exist, returns None
