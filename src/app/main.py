@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from mangum import Mangum
 
 from .environments import Environments
-
+import time
 # from .repo.item_repository_mock import ItemRepositoryMock
 
 # from .errors.entity_errors import ParamNotValidated
@@ -44,10 +44,11 @@ def deposit(request: dict):
     notes_50 =request.get("50")
     notes_100 =request.get("100")
     notes_200 =request.get("200")    
+    timestamp = int(round(time.time() * 1000))
     
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
     res=newBalance+addition
-    transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": 1690482853890})
+    transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     #repo.update_balance(0,res)
 
     return {
