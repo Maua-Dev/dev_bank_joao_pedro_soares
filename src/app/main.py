@@ -15,7 +15,7 @@ from .environments import Environments
 app = FastAPI()
 
 repo = Environments.get_item_repo()()
-
+transactions=[]
 @app.get("/")
 def get_all_items():
     print("Entrando no get all itens")
@@ -48,13 +48,43 @@ def deposit(request: dict):
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
     res=newBalance+addition
     
-    repo.update_balance(0,res)
+    #repo.update_balance(0,res)
+
     return {
         "current_balance": res,
         "timestamp": 1690482853890 
 }  
    
-
+@app.post("/deposit")
+def deposit(request: dict):
+    return {
+  "all_transactions": [
+    {
+      "type": "deposit",
+      "value": 100.0,
+      "current_balance": "1000.0",
+      "timestamp": 1690482853890
+    },
+    {
+      "type": "withdraw",
+      "timestamp": 1691707985704.6152,
+      "current_balance": 700.0,
+      "value": 300
+    },
+    {
+      "type": "deposit",
+      "current_balance": 710.0,
+      "timestamp": 1691707990727.101,
+      "value": 10
+    },
+    {
+      "type": "withdraw",
+      "timestamp": 1691707994750.5022,
+      "current_balance": 680.0,
+      "value": 30
+    }
+  ]
+}
 # @app.get("/items/{item_id}")
 # def get_item(item_id: int):
 #     validation_item_id = Item.validate_item_id(item_id=item_id)
