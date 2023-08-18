@@ -26,6 +26,9 @@ class Cliente:
 
 
 
+   @staticmethod
+   def set_balance(self,currente_balance: float):
+      self.current_balance=currente_balance
 
    @staticmethod
    def validate_agency(agency: str)->bool:

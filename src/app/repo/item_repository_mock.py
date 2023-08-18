@@ -19,12 +19,10 @@ class ItemRepositoryMock(IItemRepository):
      def get_all_items(self) -> List[Cliente]:
         return self.clientes
      
-     def update_balance(self, iposition:int, new_Balance: float) -> Cliente:
-           cliente = self.clientes[iposition]
-           cliente.current_balance=new_Balance
-           self.clientes[iposition]=cliente
-
-           return cliente
+     def update_balance(self, pos:int, new_Balance: float=None):
+         self.clientes[pos].set_balance(new_Balance)
+           
+          
 
 
 #     def get_item(self, item_id: int) -> Optional[Item]:
