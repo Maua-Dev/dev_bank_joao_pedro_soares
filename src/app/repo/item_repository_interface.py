@@ -39,12 +39,12 @@ class IItemRepository(ABC):
 #         If the item does not exist, returns None
 #         '''
         
-#     @abstractmethod
-#     def update_item(self, item_id:int, name:str=None, price:float=None, item_type:ItemTypeEnum=None, admin_permission:bool=None) -> Item:
-#         '''
-#         Updates the item with the given id.
-#         If the item does not exist, returns None
-#         '''
-#         pass
+    @abstractmethod
+    def update_balance(self, iposition:int, new_Balance: float) -> Cliente:
+        '''
+        Updates the item with the given id.
+        If the item does not exist, returns None
+        '''
+        pass
     
     

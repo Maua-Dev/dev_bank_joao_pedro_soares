@@ -28,10 +28,11 @@ def get_all_items():
 
 @app.post("/deposit")
 def deposit(request: dict):
-
-
+    newBalance = 1000
+    notes_20 =request.get("20")
+    newBalance=newBalance+notes_20
     return {
-        "current_balance": 1000.0,
+        "current_balance": newBalance,
         "timestamp": 1690482853890 
 }  
    
