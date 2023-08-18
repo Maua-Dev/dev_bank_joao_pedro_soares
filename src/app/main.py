@@ -56,7 +56,7 @@ def deposit(request: dict):
 }  
    
 @app.get("/history")
-def deposit(request: dict):
+def history():
     return {
   "all_transactions": [
     {
