@@ -10,15 +10,15 @@ class ItemRepositoryMock(IItemRepository):
     
      def __init__(self):
         self.clientes = {
-            0:Cliente(name="Vitor Soller",agency="0000",account="0000-0",current_balance=120.0),
-             1:Cliente(name="João Brancas",agency="0001",account="0000-1",current_balance=121.0),
-             2:Cliente(name="Rodrigo",agency="0002",account="0000-2",current_balance=122.0),
-             3:Cliente(name="Pedro",agency="0003",account="0003-0",current_balance=123.0)
+            Cliente(name="Vitor Soller",agency="0000",account="0000-0",current_balance=120.0),
+             Cliente(name="João Brancas",agency="0001",account="0000-1",current_balance=121.0),
+             Cliente(name="Rodrigo",agency="0002",account="0000-2",current_balance=122.0),
+             Cliente(name="Pedro",agency="0003",account="0003-0",current_balance=123.0)
         }
    
         
      def get_all_items(self) -> List[Cliente]:
-        return self.clientes.values
+        return self.clientes
      
      def update_balance(self, pos:int, new_Balance: float):
          print("hi")
