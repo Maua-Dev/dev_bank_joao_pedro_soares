@@ -50,7 +50,8 @@ def deposit(request: dict):
     res=newBalance+addition
     transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     #repo.update_balance(0,res)
-
+    if newBalance*2<=addition:
+        raise HTTPException(status_code=403, detail="Suspectiful transaction")
     return {
         "current_balance": res,
         "timestamp": timestamp 
