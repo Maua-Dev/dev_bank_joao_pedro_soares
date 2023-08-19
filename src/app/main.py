@@ -21,7 +21,7 @@ clientes_list = list()
 for cliente in clientes:
     clientes_list.append(cliente.to_dict())
 clientes_list[0]
-
+newBalance=clientes_list[0].get("current_balance")  
 @app.get("/")
 def get_all_items():
     print("Entrando no get all itens")
@@ -36,9 +36,9 @@ def get_all_items():
 def deposit(request: dict):
 
     # newBalance = 1000.0
-    newBalance=clientes_list[0].get("current_balance")  
+   
     addition=0.0
-    newBalance=newBalance
+
     notes_2 =request.get("2")
     notes_5 =request.get("5")
     notes_10 =request.get("10")   
@@ -55,7 +55,7 @@ def deposit(request: dict):
         raise HTTPException(status_code=403, detail="Depósito suspeito")
     res=newBalance+addition
     transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
-   
+    newBalance=res
     return {
         "current_balance": res,
         "timestamp": timestamp 
