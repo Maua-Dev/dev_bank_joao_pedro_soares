@@ -24,7 +24,7 @@ def get_all_items():
     clientes_list = list()
     for cliente in clientes:
         clientes_list.append(cliente.to_dict())
-    return clientes_list[0]
+    return clientes_list[0][0]
 
 @app.post("/deposit")
 def deposit(request: dict):
