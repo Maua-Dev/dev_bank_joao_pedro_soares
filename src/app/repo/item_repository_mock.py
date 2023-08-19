@@ -15,6 +15,7 @@ class ItemRepositoryMock(IItemRepository):
              Cliente(name="Rodrigo",agency="0002",account="0000-2",current_balance=122.0),
              Cliente(name="Pedro",agency="0003",account="0003-0",current_balance=123.0)
         }
+        print(""+self.clientes[0])
         
      def get_all_items(self) -> List[Cliente]:
         return self.clientes
