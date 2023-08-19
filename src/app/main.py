@@ -15,7 +15,7 @@ from .entities.item import Cliente
 app = FastAPI()
 
 repo = Environments.get_item_repo()()
-repo2 = ItemRepositoryMock()
+
 transactions=[]
 
 @app.get("/")
@@ -91,7 +91,7 @@ def deposit(request: dict):
     
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
     
-    # repo.update_balance(0,res)
+    repo.update_balance(0,res)
     if newBalance<addition:
         raise HTTPException(status_code=403, detail="Saldo insuficiente para transação.")
     res=newBalance-addition
