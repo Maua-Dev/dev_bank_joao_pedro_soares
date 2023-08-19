@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional, Tuple,Dict
+from typing import List, Optional, Tuple
 
 # from ..enums.item_type_enum import ItemTypeEnum
 
@@ -10,7 +10,7 @@ class IItemRepository(ABC):
     
     
     @abstractmethod
-    def get_all_items(self) -> List[Dict]:
+    def get_all_items(self) -> List[Cliente]:
 
 #         '''
 #         Returns all the itens in the database 

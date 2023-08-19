@@ -17,8 +17,8 @@ class ItemRepositoryMock(IItemRepository):
         }
    
         
-     def get_all_items(self) -> List[Dict]:
-        return self.clientes
+     def get_all_items(self) -> List[Cliente]:
+        return self.clientes.values
      
      def update_balance(self, pos:int, new_Balance: float):
          print("hi")
