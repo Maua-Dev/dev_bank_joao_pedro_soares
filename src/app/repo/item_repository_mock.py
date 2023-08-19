@@ -20,9 +20,8 @@ class ItemRepositoryMock(IItemRepository):
         return self.clientes
      
      def update_balance(self, pos:int, new_Balance: float):
-         item = self.clientes[pos]
-         item.current_balance=new_Balance
-         self.clientes[pos]=item
+         print("hi")
+         
           
         
            

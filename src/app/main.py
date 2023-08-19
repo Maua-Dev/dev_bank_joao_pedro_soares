@@ -9,7 +9,7 @@ from .repo.item_repository_mock import ItemRepositoryMock
 
 # from .enums.item_type_enum import ItemTypeEnum
 
-# from .entities.item import Item
+from .entities.item import Cliente
 
 
 app = FastAPI()
