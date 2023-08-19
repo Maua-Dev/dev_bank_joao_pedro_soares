@@ -3,7 +3,7 @@ from mangum import Mangum
 
 from .environments import Environments
 import time
-# from .repo.item_repository_mock import ItemRepositoryMock
+from .repo.item_repository_mock import ItemRepositoryMock
 
 # from .errors.entity_errors import ParamNotValidated
 
@@ -15,13 +15,9 @@ import time
 app = FastAPI()
 
 repo = Environments.get_item_repo()()
+repo2 = ItemRepositoryMock()
 transactions=[]
-clientes = repo.get_all_items()
-clientes_list = list()
-for cliente in clientes:
-    clientes_list.append(cliente.to_dict())
-clientes_list[0]
-newBalance=clientes_list[0].get("current_balance")  
+
 @app.get("/")
 def get_all_items():
     print("Entrando no get all itens")
@@ -34,7 +30,12 @@ def get_all_items():
 
 @app.post("/deposit")
 def deposit(request: dict):
-
+    clientes = repo.get_all_items()
+    clientes_list = list()
+    for cliente in clientes:
+        clientes_list.append(cliente.to_dict())
+    clientes_list[0]
+    newBalance=clientes_list[0].get("current_balance")  
     # newBalance = 1000.0
    
     addition=0.0
@@ -55,7 +56,7 @@ def deposit(request: dict):
         raise HTTPException(status_code=403, detail="Depósito suspeito")
     res=newBalance+addition
     transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
-    newBalance=res
+    repo2.update_balance()
     return {
         "current_balance": res,
         "timestamp": timestamp 
