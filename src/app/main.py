@@ -24,10 +24,10 @@ def get_all_items():
     clientes = repo.get_all_items()
     client = clientes[0]
     a=client.to_dict()
-    print(clientes)
-    clientes_list = list()
-    for cliente in clientes:
-        clientes_list.append(cliente.to_dict())
+    # print(clientes)
+    # clientes_list = list()
+    # for cliente in clientes:
+    #     clientes_list.append(cliente.to_dict())
     return a
 
 @app.post("/deposit")
