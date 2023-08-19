@@ -10,10 +10,10 @@ class ItemRepositoryMock(IItemRepository):
     
      def __init__(self):
         self.clientes = {
-            Cliente(name="Vitor Soller",agency="0000",account="0000-0",current_balance=100.0),
-             Cliente(name="João Brancas",agency="0001",account="0000-1",current_balance=101.0),
-             Cliente(name="Rodrigo",agency="0002",account="0000-2",current_balance=102.0),
-             Cliente(name="Pedro",agency="0003",account="0003-0",current_balance=103.0)
+            Cliente(name="Vitor Soller",agency="0000",account="0000-0",current_balance=120.0),
+             Cliente(name="João Brancas",agency="0001",account="0000-1",current_balance=121.0),
+             Cliente(name="Rodrigo",agency="0002",account="0000-2",current_balance=122.0),
+             Cliente(name="Pedro",agency="0003",account="0003-0",current_balance=123.0)
         }
         
      def get_all_items(self) -> List[Cliente]:
