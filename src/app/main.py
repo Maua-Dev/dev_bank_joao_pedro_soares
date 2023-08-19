@@ -51,7 +51,7 @@ def deposit(request: dict):
     transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     #repo.update_balance(0,res)
     if newBalance*2<=addition:
-        raise HTTPException(status_code=403, detail="Suspectiful transaction")
+        raise HTTPException(status_code=403, detail="Depósito suspeito")
     return {
         "current_balance": res,
         "timestamp": timestamp 
@@ -63,6 +63,37 @@ def history():
   "all_transactions": transactions
    
 }
+
+@app.post("/withdraw")
+def deposit(request: dict):
+    clientes = repo.get_all_items()
+    clientes_list = list()
+    for cliente in clientes:
+        clientes_list.append(cliente.to_dict())
+    clientes_list[0]
+    # newBalance = 1000.0
+    newBalance=clientes_list[0].get("current_balance")  
+    addition=0.0
+    newBalance=newBalance
+    notes_2 =request.get("2")
+    notes_5 =request.get("5")
+    notes_10 =request.get("10")   
+    notes_20 =request.get("20")
+    notes_50 =request.get("50")
+    notes_100 =request.get("100")
+    notes_200 =request.get("200")    
+    timestamp = int(round(time.time() * 1000))
+    
+    addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
+    res=newBalance-addition
+    transactions.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    #repo.update_balance(0,res)
+    if newBalance<addition:
+        raise HTTPException(status_code=403, detail="Saldo insuficiente para transação.")
+    return {
+        "current_balance": res,
+        "timestamp": timestamp 
+}  
 # @app.get("/items/{item_id}")
 # def get_item(item_id: int):
 #     validation_item_id = Item.validate_item_id(item_id=item_id)
