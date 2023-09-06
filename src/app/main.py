@@ -70,10 +70,10 @@ def deposit(request: dict):
    
 @app.get("/history")
 def history():
-    transactions = repo2.get_all_transactions()
-    transaction_list=[]
-    for transaction in transactions:
-        transaction_list.append(transaction.to_dict())
+    # transactions = repo2.get_all_transactions()
+    # transaction_list=[]
+    # for transaction in transactions:
+    #     transaction_list.append(transaction.to_dict())
     return {
           "all_transactions":transactions2
      }
