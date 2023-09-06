@@ -17,9 +17,10 @@ app = FastAPI()
 
 repo = Environments.get_item_repo()()
 
-repo2 = Environments.get_transaction_repo()()
-# from .entities.transaction import Transaction
-# from .repo.transaction_repository_mock import TransactionRepositoryMock
+# repo2 = Environments.get_transaction_repo()()
+
+from .entities.transaction import Transaction
+from .repo.transaction_repository_mock import TransactionRepositoryMock
 
 @app.get("/")
 def get_all_items():
