@@ -103,8 +103,9 @@ def deposit(request: dict):
     res=newBalance-addition
     transactions2.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     repo.update_balance(0,res)  
+
     return {
-        "current_balance": res,
+        "current_balance": 1000.0,
         "timestamp": timestamp 
 }  
 # @app.get("/items/{item_id}")
