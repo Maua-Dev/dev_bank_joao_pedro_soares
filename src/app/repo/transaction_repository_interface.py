@@ -12,7 +12,7 @@ class TransactionRepository(ABC):
     def get_all_transactions(self) -> List[Transaction]:
         pass
     
-    @abstractmethod
+
     def create_transaction(self, transaction: Transaction) -> Transaction:
         pass
     

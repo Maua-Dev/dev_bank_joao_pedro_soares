@@ -6,14 +6,14 @@ from .transaction_repository_interface import TransactionRepository
 
  
 class TransactionRepositoryMock(TransactionRepository):
-     transactions: Dict[Transaction]
+     transactions: list[Transaction]
 
      
      def __init__(self):
-        self.transactions = {
+        self.transactions = [
      Transaction("deposit", 108.00, 567.00, int(round(time.time() * 1000))),
             Transaction("withdraw", 5.50, 123.00,int(round(time.time() * 1000))),
-        }
+        ]
    
         
      def get_all_transactions(self) -> List[Transaction]:
