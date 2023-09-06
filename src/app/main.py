@@ -69,7 +69,7 @@ def deposit(request: dict):
    
 @app.get("/history")
 def history():
-    # transactions = repo2.get_all_transactions()
+    transactions = repo2.get_all_transactions()
     # transaction_list = [transaction.to_dict() for transaction in transactions]
 
     return {
