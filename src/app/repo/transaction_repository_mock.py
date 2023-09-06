@@ -1,32 +1,29 @@
 from typing import Dict, Optional, List
-
+import time
 # from ..enums.item_type_enum import ItemTypeEnum
 from ..entities.transaction import Transaction
 from .transaction_repository_interface import TransactionRepository
 
  
 class TransactionRepositoryMock(TransactionRepository):
-     transactions: Dict[int, Transaction]
+     transactions: Dict[ Transaction]
      pos:int 
      
      def __init__(self):
         self.transactions = {
-     
+     Transaction("deposit", 108.00, 567.00, time.time()*1000),
+            Transaction("withdraw", 5.50, 123.00, time.time()*1000),
         }
         self.pos=0
    
         
      def get_all_transactions(self) -> List[Transaction]:
-        return self.transactions.values()
-     
-   
-
-         
-     def create_transaction(self, transaction: Transaction,pos:int) -> Transaction:
-        
-        self.transactions[pos] = transaction
+        return self.transactions  
+    
+     def create_transaction(self, transaction: Transaction) -> Transaction:
+        self.transactions.append(transaction)
         return transaction
-              
+        
         
            
           

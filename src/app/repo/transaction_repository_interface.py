@@ -8,22 +8,13 @@ from ..entities.transaction import Transaction
 
 class TransactionRepository(ABC):
     
-    
     @abstractmethod
     def get_all_transactions(self) -> List[Transaction]:
-
-#         '''
-#         Returns all the itens in the database 
-#         '''
         pass
     
-    @abstractmethod
-    def create_transaction(self, transaction: Transaction,pos:int) -> Transaction:
-#         '''
-#         Returns the item with the given id.
-#         If the item does not exist, returns None
-#         '''
-      pass
+
+    def create_transaction(self, transaction: Transaction) -> Transaction:
+        pass
     
 #     @abstractmethod
 #     def create_item(self, item: Item, item_id: int) -> Item:

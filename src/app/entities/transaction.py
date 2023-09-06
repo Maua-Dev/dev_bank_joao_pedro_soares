@@ -33,7 +33,7 @@ class Transaction:
           "type":self.type,
           "value": self.value,
           "current_balance": self.current_balance,
-              "timestamp": self.timestamp
+          "timestamp": self.timestamp
          }
       
       
