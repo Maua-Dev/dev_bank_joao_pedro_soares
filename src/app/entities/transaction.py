@@ -3,7 +3,7 @@
 # from ..enums.item_type_enum import ItemTypeEnum
 
 
-from typing import dict
+from typing import Dict
 from ..errors.entity_errors import ParamNotValidated
 
 
@@ -26,7 +26,7 @@ class Transaction:
    @staticmethod
 
    
-   def to_dict(self)-> dict:
+   def to_dict(self)-> Dict:
       return{
        
           "type":self.type,
