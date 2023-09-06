@@ -17,7 +17,6 @@ class Transaction:
    def __init__(self, type: str=None, value: float=None, current_balance: float=None,   timestamp: int=None):
     self.type =type
     self.value =value
-
     self.timestamp =timestamp
     self.current_balance =current_balance
 
