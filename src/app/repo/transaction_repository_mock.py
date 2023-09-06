@@ -7,11 +7,13 @@ from .transaction_repository_interface import TransactionRepository
  
 class TransactionRepositoryMock(TransactionRepository):
      transactions: Dict[int, Transaction]
-    
+     pos:int 
+     
      def __init__(self):
         self.transactions = {
      
         }
+        self.pos=0
    
         
      def get_all_transactions(self) -> List[Transaction]:
@@ -20,7 +22,11 @@ class TransactionRepositoryMock(TransactionRepository):
    
 
          
-          
+     def create_transaction(self, transaction: Transaction,pos:int) -> Transaction:
+        
+        self.transactions[pos] = transaction
+        return transaction
+              
         
            
           
