@@ -36,7 +36,7 @@ def get_all_items():
     transaction_list = [transaction.to_dict() for transaction in transactions]
 
     return {
-          "all_transactions":transaction_list
+          "all_transactions"
      }
 
 @app.post("/deposit")
