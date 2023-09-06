@@ -6,7 +6,7 @@ from .transaction_repository_interface import TransactionRepository
 
  
 class TransactionRepositoryMock(TransactionRepository):
-     transactions: list[Transaction]
+     transactions: List[Transaction]
 
      
      def __init__(self):
