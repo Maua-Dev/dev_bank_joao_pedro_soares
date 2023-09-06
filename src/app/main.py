@@ -51,7 +51,7 @@ def deposit(request: dict):
     notes_50 =request.get("50")
     notes_100 =request.get("100")
     notes_200 =request.get("200")    
-    timestamp = int(round(time.time() * 1000))
+    timestamp = time.time()*1000
     
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
 
@@ -70,13 +70,11 @@ def deposit(request: dict):
 @app.get("/history")
 def history():
     transactions = repo2.get_all_transactions()
-    transaction_list = list()
-    for transaction in transactions:
-        transaction_list.append(transaction.to_dict())
 
-
+    transaction_list = [transaction.to_dict() for transaction in transactions]
     return {
-      "all_transactions": transactions2}
+          'all_transactions':transaction_list
+     }
 
 @app.post("/withdraw")
 def deposit(request: dict):
@@ -96,7 +94,7 @@ def deposit(request: dict):
     notes_50 =request.get("50")
     notes_100 =request.get("100")
     notes_200 =request.get("200")    
-    timestamp = int(round(time.time() * 1000))
+    timestamp = time.time()*1000
     
     addition=notes_2*2.0 + notes_5*5.0+notes_10*10.0+notes_20*20.0+notes_50*50.0+notes_100*100.0+notes_200*200.0
     

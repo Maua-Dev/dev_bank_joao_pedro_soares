@@ -11,8 +11,8 @@ class TransactionRepositoryMock(TransactionRepository):
      
      def __init__(self):
         self.transactions = [
-     Transaction("deposit", 108.00, 7.00, int(round(time.time() * 1000))),
-   Transaction("withdraw", 5.50, 3.00,int(round(time.time() * 1000))) ]
+     Transaction("deposit", 108.00, 7.00, time.time() * 1000),
+   Transaction("withdraw", 5.50, 3.00,time.time() * 1000), ]
    
         
      def get_all_transactions(self) -> List[Transaction]:

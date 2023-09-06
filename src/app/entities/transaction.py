@@ -12,9 +12,9 @@ class Transaction:
    type :str
    value: float 
    current_balance: float
-   timestamp:int
+   timestamp:float
 
-   def __init__(self, type: str, value: float, current_balance: float,   timestamp: int):
+   def __init__(self, type: str, value: float, current_balance: float,   timestamp: float):
     self.type =type
     self.value =value
     self.timestamp =timestamp
