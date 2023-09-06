@@ -60,6 +60,7 @@ def deposit(request: dict):
         raise HTTPException(status_code=403, detail="Depósito suspeito")
     res=newBalance+addition
     transactions2.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    
     repo.update_balance(0,res)
     return {
         "current_balance": res,
@@ -68,10 +69,10 @@ def deposit(request: dict):
    
 @app.get("/history")
 def history():
-    # transactions = repo2.get_all_transactions()
-    # transaction_list = [transaction.to_dict() for transaction in transactions]
+    transactions = repo2.get_all_transactions()
+    transaction_list = [transaction.to_dict() for transaction in transactions]
     return {
-  "all_transactions": transactions2
+  "all_transactions": transaction_list
    
 }
 
