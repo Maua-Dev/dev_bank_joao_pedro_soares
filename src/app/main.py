@@ -30,14 +30,8 @@ def get_all_items():
     clientes_list = list()
     for cliente in clientes:
         clientes_list.append(cliente.to_dict())
-    # return clientes_list[0]
-    transactions = repo2.get_all_transactions()
-    transaction_list=list()
-    transaction_list = [transaction.to_dict() for transaction in transactions]
-
-    return {
-          "all_transactions"
-     }
+    return clientes_list[0]
+  
 
 @app.post("/deposit")
 def deposit(request: dict):
