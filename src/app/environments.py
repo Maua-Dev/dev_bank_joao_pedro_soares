@@ -5,7 +5,7 @@ import os
 from .errors.environment_errors import EnvironmentNotFound
 
 from .repo.item_repository_interface import IItemRepository
-
+from .repo.transaction_repository_interface import TransactionRepository
 
 class STAGE(Enum):
     DOTENV = "DOTENV"
@@ -39,6 +39,15 @@ class Environments:
         if Environments.get_envs().stage == STAGE.TEST:
             from .repo.item_repository_mock import ItemRepositoryMock
             return ItemRepositoryMock
+        # use "elif" conditional to add other stages
+        else:
+            raise EnvironmentNotFound("STAGE")
+        
+    @staticmethod
+    def get_transaction_repo() -> TransactionRepository:
+        if Environments.get_envs().stage == STAGE.TEST:
+            from .repo.transaction_repository_mock import TransactionRepositoryMock
+            return TransactionRepositoryMock
         # use "elif" conditional to add other stages
         else:
             raise EnvironmentNotFound("STAGE")

@@ -17,13 +17,13 @@ class TransactionRepository(ABC):
 #         '''
         pass
     
-#     @abstractmethod
-#     def get_item(self, item_id: int) -> Optional[Item]:
+    @abstractmethod
+    def create_transaction(self, transaction: Transaction,pos:int) -> Transaction:
 #         '''
 #         Returns the item with the given id.
 #         If the item does not exist, returns None
 #         '''
-#         pass
+      pass
     
 #     @abstractmethod
 #     def create_item(self, item: Item, item_id: int) -> Item:
