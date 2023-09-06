@@ -75,7 +75,7 @@ def history():
     for transaction in transactions:
         transaction_list.append(transaction.to_dict())
     return {
-          "all_transactions":transaction_list
+          "all_transactions":transactions2
      }
 
 @app.post("/withdraw")
