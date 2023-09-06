@@ -4,20 +4,19 @@ from mangum import Mangum
 from .environments import Environments
 import time
 from .repo.item_repository_mock import ItemRepositoryMock
-from .repo.transaction_repository_mock import TransactionRepositoryMock
+
 # from .errors.entity_errors import ParamNotValidated
 
 # from .enums.item_type_enum import ItemTypeEnum
 
 from .entities.item import Cliente
 
-from .entities.transaction import Transaction
 
 app = FastAPI()
 
 repo = Environments.get_item_repo()()
-repo2 = Environments.get_transaction_repo()()
-transactions2=[]
+
+transactions=[]
 
 @app.get("/")
 def get_all_items():
@@ -56,8 +55,7 @@ def deposit(request: dict):
     if newBalance*2<=addition:
         raise HTTPException(status_code=403, detail="Depósito suspeito")
     res=newBalance+addition
-
-    transactions2.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     repo.update_balance(0,res)
     return {
         "current_balance": res,
@@ -66,12 +64,8 @@ def deposit(request: dict):
    
 @app.get("/history")
 def history():
-    transactions=repo2.get_all_transactions()
-    transactions_list = list()
-    for transaction in transactions:
-        transactions_list.append(transaction.to_dict())
     return {
-  "all_transactions": transactions_list
+  "all_transactions": transactions
    
 }
 
@@ -101,11 +95,10 @@ def deposit(request: dict):
     if newBalance<addition:
         raise HTTPException(status_code=403, detail="Saldo insuficiente para transação.")
     res=newBalance-addition
-    transactions2.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    transactions.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     repo.update_balance(0,res)  
-
     return {
-        "current_balance": 1000.0,
+        "current_balance": res,
         "timestamp": timestamp 
 }  
 # @app.get("/items/{item_id}")
