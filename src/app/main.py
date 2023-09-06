@@ -70,7 +70,7 @@ def history():
     for transaction in transactions:
         transactions_list.append(transaction.to_dict())
     return {
-  "all_transactions": transactions
+  "all_transactions": transactions_list
    
 }
 
