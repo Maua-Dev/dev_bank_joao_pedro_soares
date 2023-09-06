@@ -14,7 +14,7 @@ class Transaction:
    current_balance: float
    timestamp:int
 
-   def __init__(self, type: str=None, value: float=None, current_balance: float=None,   timestamp: int=None):
+   def __init__(self, type: str, value: float, current_balance: float,   timestamp: int):
     self.type =type
     self.value =value
     self.timestamp =timestamp
