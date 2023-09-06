@@ -4,21 +4,22 @@ from mangum import Mangum
 from .environments import Environments
 import time
 from .repo.item_repository_mock import ItemRepositoryMock
-from .repo.transaction_repository_mock import TransactionRepositoryMock
+
 
 # from .errors.entity_errors import ParamNotValidated
 
 # from .enums.item_type_enum import ItemTypeEnum
 
 from .entities.item import Cliente
-from .entities.transaction import Transaction
 
+transactions2=[]
 app = FastAPI()
 
 repo = Environments.get_item_repo()()
-repo2 = Environments.get_transaction_repo()()
 
-transactions2=[]
+# repo2 = Environments.get_transaction_repo()()
+# from .entities.transaction import Transaction
+# from .repo.transaction_repository_mock import TransactionRepositoryMock
 
 @app.get("/")
 def get_all_items():
@@ -66,11 +67,10 @@ def deposit(request: dict):
    
 @app.get("/history")
 def history():
-    transactions = repo2.get_all_transactions()
-
-    transaction_list = [transaction.to_dict() for transaction in transactions]
+    # transactions = repo2.get_all_transactions()
+    # transaction_list = [transaction.to_dict() for transaction in transactions]
     return {
-  "all_transactions": transaction_list
+  "all_transactions": transactions2
    
 }
 
