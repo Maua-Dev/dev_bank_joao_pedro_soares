@@ -16,7 +16,7 @@ app = FastAPI()
 
 repo = Environments.get_item_repo()()
 
-transactions=[]
+transactions2=[]
 
 @app.get("/")
 def get_all_items():
@@ -56,7 +56,7 @@ def deposit(request: dict):
         raise HTTPException(status_code=403, detail="Depósito suspeito")
     res=newBalance+addition
 
-    transactions.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    transactions2.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     repo.update_balance(0,res)
     return {
         "current_balance": res,
@@ -100,7 +100,7 @@ def deposit(request: dict):
     if newBalance<addition:
         raise HTTPException(status_code=403, detail="Saldo insuficiente para transação.")
     res=newBalance-addition
-    transactions.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    transactions2.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     repo.update_balance(0,res)  
     return {
         "current_balance": res,
