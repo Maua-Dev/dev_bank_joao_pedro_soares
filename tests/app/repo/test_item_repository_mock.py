@@ -3,12 +3,20 @@
 # from src.app.enums.item_type_enum import ItemTypeEnum
 from src.app.repo.item_repository_mock import ItemRepositoryMock
 
+from src.app.repo.transaction_repository_mock import TransactionRepositoryMock
 
 class Test_ItemRepositoryMock:
          def test_get_all_items(self):  
                  repo = ItemRepositoryMock()
                  clientes = repo.get_all_items()
                  expected_clientes = repo.clientes
+
+                 assert expected_clientes==clientes 
+class Test_TransactionRepositoryMock:
+         def test_get_all_transactions(self):  
+                 repo2 = TransactionRepositoryMock()
+                 clientes = repo2.get_all_transactions()
+                 expected_clientes = repo2.transactions
 
                  assert expected_clientes==clientes 
 # class Test_ItemRepositoryMock:
