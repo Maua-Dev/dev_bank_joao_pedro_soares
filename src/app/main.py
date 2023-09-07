@@ -63,6 +63,13 @@ def deposit(request: dict):
     transactions2.append({"type": "deposit",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     
     repo.update_balance(0,res)
+    transaction =Transaction(
+          type =  "deposit",
+          value=addition,
+          current_balance= res,
+          timestamp=timestamp
+     )
+    repo2.create_transaction(transaction)
     return {
         "current_balance": res,
         "timestamp": timestamp 
