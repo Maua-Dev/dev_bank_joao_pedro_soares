@@ -111,10 +111,10 @@ def deposit(request: dict):
     if newBalance<addition:
         raise HTTPException(status_code=403, detail="Saldo insuficiente para transação.")
     res=newBalance-addition
-    transactions2.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
+    # transactions2.append({"type": "withdraw",     "value": addition,    "current_balance": res, "timestamp": timestamp})
     repo.update_balance(0,res)  
     transaction =Transaction(
-          type =  "deposit",
+          type =  "withdraw",
           value=addition,
           current_balance= res,
           timestamp=timestamp
