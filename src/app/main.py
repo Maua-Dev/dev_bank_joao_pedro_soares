@@ -22,7 +22,7 @@ repo2 = Environments.get_transaction_repo()()
 from .entities.transaction import Transaction
 from .repo.transaction_repository_mock import TransactionRepositoryMock
 
-@app.get("/history")
+@app.get("/")
 def get_all_items():
     print("Entrando no get all itens")
     clientes = repo.get_all_items()
@@ -68,7 +68,7 @@ def deposit(request: dict):
         "timestamp": timestamp 
 }  
    
-@app.get("/")
+@app.get("/history")
 def history():
     transactions = repo2.get_all_transactions()
     # transaction_list=[]
