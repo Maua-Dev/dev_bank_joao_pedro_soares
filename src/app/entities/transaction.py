@@ -4,6 +4,8 @@
 
 
 from typing import Dict
+
+from src.app.errors.domain_errors import EntityError
 from ..errors.entity_errors import ParamNotValidated
 
 
@@ -15,8 +17,10 @@ class Transaction:
    timestamp:float
 
    def __init__(self, type: str, value: float, current_balance: float,   timestamp: float):
-    
+    if(type(type) !=str):
+      raise EntityError('type')
     self.type =type
+    
     self.value =value
     self.timestamp =timestamp
     self.current_balance =current_balance

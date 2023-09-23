@@ -16,13 +16,18 @@ class CreateOrderController:
                 
             if request.body.get('value') is None:
                 raise MissingParameters('value')
-            
+            if request.body.get('current_balance') is None:
+                raise MissingParameters('current_balance')
+                
+            if request.body.get('timestamp') is None:
+                raise MissingParameters('timestamp')       
+                 
             transaction = self.CreateTransactionUseCase(type=str[request.body["type"]],value=float[request.body["value"]], current_balance=float(request.body["current_balance"]),timestamp=float(request.body["timestamp"]))
             viewmodel = CreateTransactionViewModel(transaction=transaction)
             
             return Created(viewmodel.to_dict())
         
-        except: EntityError as err:
+        except EntityError as err:
             return BadRequest(body=err.message)
             
         except MissingParameters as err:
