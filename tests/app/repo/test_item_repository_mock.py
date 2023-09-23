@@ -12,6 +12,7 @@ class Test_ItemRepositoryMock:
                  expected_clientes = repo.clientes
 
                  assert expected_clientes==clientes 
+                 
 class Test_TransactionRepositoryMock:
          def test_get_all_transactions(self):  
                  repo2 = TransactionRepositoryMock()

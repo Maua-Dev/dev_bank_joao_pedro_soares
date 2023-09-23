@@ -1,13 +1,13 @@
 import pytest
 from src.app.repo import transaction_repository_mock
-from src.app.repo.transaction_repository_interface import TransactionRepository
+from src.app.repo.transaction_repository_mock import TransactionRepositoryMock
 
 from src.modules.create_transaction.app import create_transaction_controller, create_transaction_usecase
 from src.shared.http.http_models import HttpRequest
 
 class Test_create_transaction_controller:    
-    def test_create_transaction_controller(self):
-        repo = TransactionRepository()
+    def test_CreateOrderController(self):
+        repo = TransactionRepositoryMock()
         usecase = create_transaction_usecase(repo=repo)
         controller = create_transaction_controller(usecase=usecase)
         request= HttpRequest(
@@ -21,3 +21,4 @@ class Test_create_transaction_controller:
         )
         response=controller(request=request)
         assert response.status_code == 201
+        assert True
